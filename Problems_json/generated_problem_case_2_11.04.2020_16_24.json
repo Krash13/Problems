@@ -1,0 +1,82 @@
+{
+  "token": "b01857eddd2e513f7045fb7e195daab3fd347b4a3312f3ce38",
+  "case": {
+    "id": 2,
+    "controllable": [
+      {
+        "id": 2,
+        "parameter": {
+          "id": 7,
+          "tag": "V224_liqpercentlevel"
+        },
+        "top": 60.0,
+        "bottom": 20.0,
+        "reverse": false,
+        "last_time": 0,
+        "fail_message": "\u041f\u0440\u043e\u0432\u0430\u043b",
+        "case": 2
+      },
+      {
+        "id": 3,
+        "parameter": {
+          "id": 6,
+          "tag": "V202_liqpercentlevel"
+        },
+        "top": 60.0,
+        "bottom": 20.0,
+        "reverse": false,
+        "last_time": 0,
+        "fail_message": "\u041f\u0440\u043e\u0432\u0430\u043b",
+        "case": 2
+      }
+    ],
+    "modifiable": [
+      {
+        "id": 2,
+        "changes": [
+          {
+            "id": 3,
+            "conditions": [],
+            "value": 255.0,
+            "last_time": 30,
+            "parameter": 2
+          }
+        ],
+        "parameter": {
+          "id": 3,
+          "tag": "R402_E404_temp"
+        },
+        "case": 2
+      },
+      {
+        "id": 3,
+        "changes": [
+          {
+            "id": 4,
+            "conditions": [],
+            "value": 3.0,
+            "last_time": 10,
+            "parameter": 3
+          },
+          {
+            "id": 5,
+            "conditions": [],
+            "value": 5.0,
+            "last_time": 15,
+            "parameter": 3
+          }
+        ],
+        "parameter": {
+          "id": 1,
+          "tag": "E404_R402_temp"
+        },
+        "case": 2
+      }
+    ],
+    "name": "\u0410\u0432\u0430\u0440\u0438\u044f2",
+    "start_message": "\u0412\u043f\u0435\u0440\u0435\u0434",
+    "success_message": "\u0423\u0441\u043f\u0435\u0445",
+    "fail_message": "\u041f\u0440\u043e\u0432\u0430\u043b",
+    "scheme": 1
+  }
+}

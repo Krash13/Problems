@@ -1,0 +1,46 @@
+{
+  "token": "bc9ed95191812f053b7fbeb1303519f8d950d7cf2a46792ff2",
+  "case": {
+    "id": 1,
+    "controllable": [
+      {
+        "id": 1,
+        "top": 50.0,
+        "bottom": 30.0,
+        "reverse": false,
+        "last_time": 0,
+        "fail_message": "\u0423\u0442\u0435\u0447\u043a\u0430",
+        "case": 1,
+        "parameter": 6
+      }
+    ],
+    "modifiable": [
+      {
+        "id": 1,
+        "changes": [
+          {
+            "id": 1,
+            "conditions": [],
+            "value": 2.0,
+            "last_time": 5,
+            "parameter": 1
+          },
+          {
+            "id": 2,
+            "conditions": [],
+            "value": 5.0,
+            "last_time": 25,
+            "parameter": 1
+          }
+        ],
+        "case": 1,
+        "parameter": 1
+      }
+    ],
+    "name": "\u0410\u0432\u0430\u0440\u0438\u044f1",
+    "start_message": "\u0421\u0442\u0430\u0440\u0442\u043e\u0432\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435",
+    "success_message": "\u0422\u0435\u0441\u0442 \u043f\u0440\u043e\u0439\u0434\u0435\u0442",
+    "fail_message": "\u0422\u0435\u0441\u0442 \u043f\u0440\u043e\u0432\u0430\u043b\u0435\u043d",
+    "scheme": 1
+  }
+}
