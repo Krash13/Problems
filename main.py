@@ -1,9 +1,11 @@
 from Problem import ProblemSituation
 
-def main(file_name):
+def main():
+    file_name = input("Введите путь к файлу:")
     problem=ProblemSituation(file_name)
-    problem.play(1)
+    tim=int(input("Введите работы в минутах:"))
+    problem.play(tim)
 
 
-file_name=input()
-main(file_name)
+
+main()

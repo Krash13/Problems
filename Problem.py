@@ -14,8 +14,12 @@ def make_request(command,data,headers):
 
 class ProblemSituation():
     def __init__(self,file_name):
-        with open(file_name, "r") as read_file:
-            self.problem = json.load(read_file)
+        try:
+            with open(file_name, "r") as read_file:
+                    self.problem = json.load(read_file)
+        except:
+            print("Файл не найден")
+            exit()
         self.headers = {"Authorization": self.problem["token"]}
         self.control = {}
         for c in self.problem["case"]["controllable"]:
