@@ -1,0 +1,95 @@
+{
+  "token": "e505a5be79e457924e12639958024d2c9c454ad6ec577ae8a3",
+  "case": {
+    "id": 2,
+    "controllable": [
+      {
+        "id": 4,
+        "parameter": {
+          "id": 57,
+          "tag": "V224_liqpercentlevel"
+        },
+        "top": 60.0,
+        "bottom": 20.0,
+        "reverse": false,
+        "last_time": 0,
+        "fail_message": "\u0423 \u0432\u0430\u0441 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u044b!",
+        "case": 2
+      }
+    ],
+    "modifiable": [
+      {
+        "id": 4,
+        "changes": [
+          {
+            "id": 6,
+            "conditions": [],
+            "value": 1.0,
+            "last_time": 5,
+            "parameter": 4
+          },
+          {
+            "id": 7,
+            "conditions": [],
+            "value": 2.0,
+            "last_time": 30,
+            "parameter": 4
+          },
+          {
+            "id": 8,
+            "conditions": [],
+            "value": 4.0,
+            "last_time": 50,
+            "parameter": 4
+          },
+          {
+            "id": 10,
+            "conditions": [
+              {
+                "id": 1,
+                "controlled": {
+                  "id": 57,
+                  "tag": "V224_liqpercentlevel"
+                },
+                "reverse": true,
+                "bot": 30.0,
+                "top": 40.0,
+                "change": 10
+              }
+            ],
+            "value": 20.0,
+            "last_time": 300,
+            "parameter": 4
+          }
+        ],
+        "parameter": {
+          "id": 59,
+          "tag": "VLV103_actuatorcurrentposition"
+        },
+        "case": 2
+      },
+      {
+        "id": 5,
+        "changes": [
+          {
+            "id": 9,
+            "conditions": [],
+            "value": 0.0,
+            "last_time": 1,
+            "parameter": 5
+          }
+        ],
+        "parameter": {
+          "id": 60,
+          "tag": "1LVY1308_controlmode"
+        },
+        "case": 2
+      }
+    ],
+    "name": "\u0410\u0432\u0430\u0440\u0438\u044f2",
+    "start_message": "\u0412\u043f\u0435\u0440\u0435\u0434",
+    "success_message": "\u0423\u0441\u043f\u0435\u0445",
+    "fail_message": "\u041f\u0440\u043e\u0432\u0430\u043b",
+    "scheme": 2
+  }
+}

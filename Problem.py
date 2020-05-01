@@ -53,9 +53,15 @@ class ProblemSituation():
             req=make_request("read",{"tags":self.str_rd},self.headers)
             print(req)
             for r in req:
-                if r["value"]>=self.control[r["tag"]]["bottom"] and r["value"]<=self.control[r["tag"]]["top"]:
+                if not self.control[r["tag"]]["reverse"]:
+                    statement = r["value"] >= self.control[r["tag"]]["bottom"] and r["value"] <= self.control[r["tag"]]["top"]
+                else:
+                    statement = r["value"] <= self.control[r["tag"]]["bottom"] and r["value"] >= self.control[r["tag"]]["top"]
+
+                if statement:
                     pass
                 else:
                     print(self.control[r["tag"]]["fail_message"])
+                    exit()
         self.date_end = (datetime.datetime.now() - datetime.timedelta(hours=3)).strftime("%d.%m.%Y_%H:%M:%S")
         make_request("end", {"end": self.date_end}, self.headers)
