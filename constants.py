@@ -1,4 +1,3 @@
-import requests
 server="http://193.232.56.4:8010"
 
 commands={

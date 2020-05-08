@@ -20,6 +20,7 @@ class ProblemSituation():
         except:
             print("Файл не найден")
             exit()
+        self.time=self.problem["case"]["time_in_minutes"]
         self.headers = {"Authorization": self.problem["token"]}
         self.control = {}
         for c in self.problem["case"]["controllable"]:
@@ -41,27 +42,43 @@ class ProblemSituation():
                 self.changes.append(
                     {"tag": param["parameter"]["tag"], "value": change["value"], "time": change["last_time"]})
 
-    def play(self,tim):
+    def play(self):
         self.date_start=(datetime.datetime.now()-datetime.timedelta(hours=3)).strftime("%d.%m.%Y_%H:%M:%S")
         make_request("start",{"start":self.date_start},self.headers)
+        print(self.problem["case"]["start_message"])
         sec=0
-        while (sec/60<tim):
+        while (sec/60<self.time):
             time.sleep(1)
             sec+=1
             ch=[{"tag":change["tag"],"value":change["value"]} for change in self.changes if change["time"]==sec]
             make_request("write", json.dumps(ch),self.headers)
             req=make_request("read",{"tags":self.str_rd},self.headers)
             print(req)
+            result=True
             for r in req:
                 if not self.control[r["tag"]]["reverse"]:
                     statement = r["value"] >= self.control[r["tag"]]["bottom"] and r["value"] <= self.control[r["tag"]]["top"]
                 else:
                     statement = r["value"] <= self.control[r["tag"]]["bottom"] and r["value"] >= self.control[r["tag"]]["top"]
+                result=result and statement
 
-                if statement:
-                    pass
-                else:
-                    print(self.control[r["tag"]]["fail_message"])
+                if result:
+                    print(self.problem["case"]["success_message"])
+                    self.date_end = (datetime.datetime.now() - datetime.timedelta(hours=3)).strftime("%d.%m.%Y_%H:%M:%S")
+                    make_request("end", {"end": self.date_end}, self.headers)
                     exit()
+
+        self.problem["case"]["fail_message"]
+        for r in req:
+            if not self.control[r["tag"]]["reverse"]:
+                statement = r["value"] >= self.control[r["tag"]]["bottom"] and r["value"] <= self.control[r["tag"]][
+                    "top"]
+            else:
+                statement = r["value"] <= self.control[r["tag"]]["bottom"] and r["value"] >= self.control[r["tag"]][
+                    "top"]
+            result = result and statement
+            if not statement:
+                print(self.control[r["tag"]]["fail_message"])
+
         self.date_end = (datetime.datetime.now() - datetime.timedelta(hours=3)).strftime("%d.%m.%Y_%H:%M:%S")
         make_request("end", {"end": self.date_end}, self.headers)
