@@ -30,12 +30,7 @@ class ProblemSituation():
             rd.append(c["parameter"]["tag"])
 
         self.modif = self.problem["case"]["modifiable"]
-        self.str_rd = '['
-        for i in range(len(rd)):
-            self.str_rd += '"' + rd[i] + '"'
-            if i != len(rd) - 1:
-                self.str_rd += ","
-        self.str_rd += "]"
+        self.rd = json.dumps(rd)
         self.changes = []
         for param in self.modif:
             for change in param["changes"]:
@@ -52,7 +47,7 @@ class ProblemSituation():
             sec+=1
             ch=[{"tag":change["tag"],"value":change["value"]} for change in self.changes if change["time"]==sec]
             make_request("write", json.dumps(ch),self.headers)
-            req=make_request("read",{"tags":self.str_rd},self.headers)
+            req=make_request("read",{"tags":self.rd},self.headers)
             print(req)
             result=True
             for r in req:
@@ -71,11 +66,9 @@ class ProblemSituation():
         self.problem["case"]["fail_message"]
         for r in req:
             if not self.control[r["tag"]]["reverse"]:
-                statement = r["value"] >= self.control[r["tag"]]["bottom"] and r["value"] <= self.control[r["tag"]][
-                    "top"]
+                statement = r["value"] >= self.control[r["tag"]]["bottom"] and r["value"] <= self.control[r["tag"]]["top"]
             else:
-                statement = r["value"] <= self.control[r["tag"]]["bottom"] and r["value"] >= self.control[r["tag"]][
-                    "top"]
+                statement = r["value"] <= self.control[r["tag"]]["bottom"] and r["value"] >= self.control[r["tag"]]["top"]
             result = result and statement
             if not statement:
                 print(self.control[r["tag"]]["fail_message"])

@@ -5,4 +5,5 @@ def main():
     problem=ProblemSituation(file_name)
     problem.play()
 
-main()
+if __name__ == '__main__':
+    main()
