@@ -35,7 +35,7 @@ class ProblemSituation():
         for param in self.modif:
             for change in param["changes"]:
                 self.changes.append(
-                    {"tag": param["parameter"]["tag"], "value": change["value"], "time": change["last_time"]})
+                    {"tag": param["parameter"]["tag"], "value": change["value"], "time": change["last_time"], "conditions":change["conditions"]})
 
     def play(self):
         self.date_start=(datetime.datetime.now()-datetime.timedelta(hours=3)).strftime("%d.%m.%Y_%H:%M:%S")
@@ -43,10 +43,28 @@ class ProblemSituation():
         print(self.problem["case"]["start_message"])
         sec=0
         while (sec/60<self.time):
-            time.sleep(1)
-            sec+=1
-            ch=[{"tag":change["tag"],"value":change["value"]} for change in self.changes if change["time"]==sec]
+            ch=[{"tag":change["tag"],"value":change["value"],"conditions":change["conditions"]} for change in self.changes if change["time"]==sec]
+            ch1=[]
+            for change in ch:
+                if change["conditions"]!=[]:
+                    result = True
+                    for condition in change["conditions"]:
+                        wr=make_request("read",{"tags":json.dumps([condition["controlled"]["tag"]])},self.headers)[0]["value"]
+                        if not condition["reverse"]:
+                            st= wr >= condition["bot"] and wr <= condition["top"]
+                        else:
+                            st = wr <= condition["bot"] or wr >= condition["top"]
+                        result= result and st
+                    if result:
+                        ch1.append({"tag": change["tag"], "value": change["value"]})
+                else:
+                    ch1.append({"tag":change["tag"],"value":change["value"]})
+            ch=ch1
             make_request("write", json.dumps(ch),self.headers)
+
+            time.sleep(1)
+            sec += 1
+
             req=make_request("read",{"tags":self.rd},self.headers)
             print(req)
             result=True
@@ -54,7 +72,7 @@ class ProblemSituation():
                 if not self.control[r["tag"]]["reverse"]:
                     statement = r["value"] >= self.control[r["tag"]]["bottom"] and r["value"] <= self.control[r["tag"]]["top"]
                 else:
-                    statement = r["value"] <= self.control[r["tag"]]["bottom"] and r["value"] >= self.control[r["tag"]]["top"]
+                    statement = r["value"] <= self.control[r["tag"]]["bottom"] or r["value"] >= self.control[r["tag"]]["top"]
                 result=result and statement
 
                 if result:
