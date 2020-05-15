@@ -75,11 +75,11 @@ class ProblemSituation():
                     statement = r["value"] <= self.control[r["tag"]]["bottom"] or r["value"] >= self.control[r["tag"]]["top"]
                 result=result and statement
 
-                if result:
-                    print(self.problem["case"]["success_message"])
-                    self.date_end = (datetime.datetime.now() - datetime.timedelta(hours=3)).strftime("%d.%m.%Y_%H:%M:%S")
-                    make_request("end", {"end": self.date_end}, self.headers)
-                    exit()
+            if result:
+                print(self.problem["case"]["success_message"])
+                self.date_end = (datetime.datetime.now() - datetime.timedelta(hours=3)).strftime("%d.%m.%Y_%H:%M:%S")
+                make_request("end", {"end": self.date_end}, self.headers)
+                exit()
 
         self.problem["case"]["fail_message"]
         for r in req:
