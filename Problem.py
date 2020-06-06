@@ -68,6 +68,8 @@ class ProblemSituation():
             req=make_request("read",{"tags":self.rd},self.headers)
             print(req)
             result=True
+            if sec==1:
+                result = False
             for r in req:
                 if not self.control[r["tag"]]["reverse"]:
                     statement = r["value"] >= self.control[r["tag"]]["bottom"] and r["value"] <= self.control[r["tag"]]["top"]

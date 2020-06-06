@@ -1,0 +1,89 @@
+{
+  "token": "ff7f125389d1f93b672ab41224a9b0e0e19a89fb9be22de6ee",
+  "case": {
+    "id": 4,
+    "controllable": [
+      {
+        "id": 12,
+        "parameter": {
+          "id": 68,
+          "tag": "VLV103_actuatorcurrentpotion"
+        },
+        "top": 0.01,
+        "bottom": 0.0,
+        "reverse": false,
+        "last_time": 0,
+        "fail_message": "\u041d\u0435 \u0434\u043e \u043a\u043e\u043d\u0446\u0430 \u043f\u0435\u0440\u0435\u043a\u0440\u044b\u0442 \u0432\u0435\u043d\u0442\u0438\u043b\u044c VLV103.",
+        "case": 4
+      },
+      {
+        "id": 13,
+        "parameter": {
+          "id": 67,
+          "tag": "VLV101_actuatorcurrentpotion"
+        },
+        "top": 0.01,
+        "bottom": 0.0,
+        "reverse": false,
+        "last_time": 0,
+        "fail_message": "\u041d\u0435 \u0434\u043e \u043a\u043e\u043d\u0446\u0430 \u043f\u0435\u0440\u0435\u043a\u0440\u044b\u0442 \u0432\u0435\u043d\u0442\u0438\u043b\u044c VLV101.",
+        "case": 4
+      },
+      {
+        "id": 14,
+        "parameter": {
+          "id": 66,
+          "tag": "VLV104_actuatorcurrentpotion"
+        },
+        "top": 76.0,
+        "bottom": 74.0,
+        "reverse": false,
+        "last_time": 0,
+        "fail_message": "\u041d\u0435\u0432\u0435\u0440\u043d\u0430\u044f \u043f\u043e\u0437\u0438\u0446\u0438\u044f \u0440\u0443\u0447\u043d\u043e\u0433\u043e \u0432\u0435\u043d\u0442\u0438\u043b\u044f VLV104.",
+        "case": 4
+      }
+    ],
+    "modifiable": [
+      {
+        "id": 10,
+        "changes": [
+          {
+            "id": 18,
+            "conditions": [],
+            "value": 0.0,
+            "last_time": 5,
+            "parameter": 10
+          }
+        ],
+        "parameter": {
+          "id": 76,
+          "tag": "1TICA5324_controlmode"
+        },
+        "case": 4
+      },
+      {
+        "id": 11,
+        "changes": [
+          {
+            "id": 19,
+            "conditions": [],
+            "value": 0.0,
+            "last_time": 5,
+            "parameter": 11
+          }
+        ],
+        "parameter": {
+          "id": 77,
+          "tag": "1TVY5324_valvecurrentposition"
+        },
+        "case": 4
+      }
+    ],
+    "name": "\u0417\u0430\u043b\u0438\u043f\u0430\u043d\u0438\u0435 \u043a\u043b\u0430\u043f\u0430\u043d\u0430 1TVY5324",
+    "start_message": "\u0410\u0432\u0430\u0440\u0438\u0439\u043d\u0430\u044f \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u044f \u0437\u0430\u043f\u0443\u0449\u0435\u043d\u0430!",
+    "success_message": "\u0410\u0432\u0430\u0440\u0438\u044f \"\u0417\u0430\u043b\u0438\u043f\u0430\u043d\u0438\u0435 \u043a\u043b\u0430\u043f\u0430\u043d\u0430 1TVY5324\" \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u043b\u0438\u043a\u0432\u0438\u0434\u0438\u0440\u043e\u0432\u0430\u043d\u0430!",
+    "fail_message": "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043b\u0438\u043a\u0432\u0438\u0434\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0430\u0432\u0430\u0440\u0438\u044e \u0437\u0430 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f.",
+    "time_in_minutes": 10,
+	"scheme": 2
+  }
+}
